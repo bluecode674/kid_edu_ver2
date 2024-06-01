@@ -1,6 +1,4 @@
 /* src/QuestionPage.css */
-
-/*
 .question-page {
     display: flex;
     flex-direction: column;
@@ -11,6 +9,7 @@
   .question-page h1 {
     font-size: 24px;
     margin-bottom: 20px;
+    color: #333;
   }
   
   .button {
@@ -37,4 +36,4 @@
     font-size: 18px;
     color: #333;
   }
-  */
+  

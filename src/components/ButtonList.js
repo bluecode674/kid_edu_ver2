@@ -1,7 +1,5 @@
-// src/ButtonList.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useStateContext } from './StateContext';
 import './ButtonList.css';
 
 const questions = [
@@ -24,29 +22,23 @@ const questions = [
   "대장은 음식물에 남아있는 ○을 빨아들인다",
   "대장이 음식물의 물기를 빨아들이면 남은 찌꺼기는 무엇이 될까?",
   "음식물에서 물기가 빠지는 과정을 몸으로 표현하기",
-  "똥이 마려울 때 드는 느낌 3가지 말해보기"
+  "똥이 마려울 때 드는 느낌 3가지 말해보기",
 ];
 
-const ButtonList = () => {
-  const { clickedButtons, handleClick, resetButtons } = useStateContext();
-
+const ButtonList = ({ answeredQuestions, resetAnswers }) => {
   return (
-    <div className="button-list">
-      {questions.map((question, index) => (
-        !clickedButtons.includes(index) && (
-          <Link
-            to={`/question/${index + 1}`}
-            key={index}
-            className="button"
-            onClick={() => handleClick(index)}
-          >
-            {`Question ${index + 1}`}
-          </Link>
-        )
-      ))}
-      <button onClick={resetButtons} className="reset-button">
-        모든 문제 초기화
-      </button>
+    <div>
+      <h1>문제를 선택하세요</h1>
+      <div className="button-list">
+        {questions.map((question, index) => (
+          <div key={index} className={answeredQuestions.includes(index) ? "hidden" : "visible"}>
+            <Link to={`/question/${index + 1}`}>
+              <button>{`문제 ${index + 1}`}</button>
+            </Link>
+          </div>
+        ))}
+      </div>
+      <button onClick={resetAnswers} className="reset-button">문제 초기화</button>
     </div>
   );
 };
