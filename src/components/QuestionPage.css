@@ -10,10 +10,6 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 20px;
-  width: 87%; /* 페이지의 가로 크기 고정 */
-  max-width: 600px; /* 페이지의 최대 가로 크기 */
-  height: auto; /* 페이지의 높이 자동 조정 */
-  max-height: 800px; /* 페이지의 최대 높이 */
 }
 
 /* h1 요소의 스타일을 정의합니다. */

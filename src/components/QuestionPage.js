@@ -24,12 +24,21 @@ const QuestionPage = ({ onAnswered }) => {
     onAnswered(questionId);
   };
 
+  const renderTextWithLineBreaks = (text) => {
+    return text.split('\n').map((line, index) => (
+      <React.Fragment key={index}>
+        {line}
+        <br />
+      </React.Fragment>
+    ));
+  };
+
   return (
     <div className="question-page">
       <h1>문제 {questionId + 1}</h1>
-      <p>{questions[questionId]}</p>
+      <p>{renderTextWithLineBreaks(questions[questionId])}</p>
       <button className="answer-button" onClick={handleAnswer}>정답 확인하기</button>
-      {showAnswer && <p className="answer">{answers[questionId]}</p>}
+      {showAnswer && <p className="answer">{renderTextWithLineBreaks(answers[questionId])}</p>}
       <Link to="/">
         <button className="back-button">문제로 돌아가기</button>
       </Link>
