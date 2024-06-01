@@ -1,4 +1,6 @@
 /* src/QuestionPage.css */
+
+/* .question-page 클래스는 페이지 전체의 스타일을 정의합니다. */
 .question-page {
   display: flex;
   flex-direction: column;
@@ -10,18 +12,21 @@
   margin: 20px;
 }
 
+/* h1 요소의 스타일을 정의합니다. */
 .question-page h1 {
-  font-size: 24px;
+  font-size: 24px; /* 제목의 글자 크기 */
   margin-bottom: 20px;
   color: #333;
 }
 
+/* p 요소의 스타일을 정의합니다. */
 .question-page p {
-  font-size: 18px;
+  font-size: 30px; /* 질문 텍스트의 글자 크기 */
   color: #555;
   margin-bottom: 20px;
 }
 
+/* 버튼의 기본 스타일을 정의합니다. */
 .answer-button, .back-button {
   margin: 10px;
   padding: 10px 20px;
@@ -31,19 +36,25 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 16px; /* 버튼 텍스트의 글자 크기 */
   transition: background-color 0.3s;
 }
 
+/* 버튼에 마우스를 올렸을 때의 스타일을 정의합니다. */
 .answer-button:hover, .back-button:hover {
   background-color: #0056b3;
 }
 
+/* 정답 텍스트의 스타일을 정의합니다. */
 .answer {
   margin-top: 20px;
   padding: 10px;
   background-color: lightgray;
   border-radius: 5px;
-  font-size: 18px;
+  font-size: 25px; /* 정답 텍스트의 글자 크기 */
   color: #333;
 }
+
+/* 정답 텍스트의 글자 크기를 더 키우고 싶다면 아래와 같이 변경하세요. */
+/* .answer {
+  font-size: 30px; /* 예시로 글자 크기를 30px로 변경 */
