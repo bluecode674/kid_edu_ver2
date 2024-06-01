@@ -16,14 +16,14 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 10px;
 }
 
 .grid-item {
-  background-color: #B9E9FF;
+  background-color: #add8e6;
   border-radius: 10px;
-  padding: 20px;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,8 +35,11 @@
 }
 
 .grid-item img {
-  width: 80%;
+  width: 100%;
   height: auto;
+  max-width: 80px;
+  max-height: 80px;
+  object-fit: contain;
 }
 
 .grid-item span {
