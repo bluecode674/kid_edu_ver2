@@ -28,10 +28,10 @@ const QuestionPage = ({ onAnswered }) => {
     <div className="question-page">
       <h1>문제 {questionId + 1}</h1>
       <p>{questions[questionId]}</p>
-      <button onClick={handleAnswer}>정답 확인하기</button>
+      <button className="answer-button" onClick={handleAnswer}>정답 확인하기</button>
       {showAnswer && <p className="answer">{answers[questionId]}</p>}
       <Link to="/">
-        <button className="button">문제로 돌아가기</button>
+        <button className="back-button">문제로 돌아가기</button>
       </Link>
     </div>
   );

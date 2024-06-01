@@ -22,23 +22,25 @@ const questions = [
   "대장은 음식물에 남아있는 ○을 빨아들인다",
   "대장이 음식물의 물기를 빨아들이면 남은 찌꺼기는 무엇이 될까?",
   "음식물에서 물기가 빠지는 과정을 몸으로 표현하기",
-  "똥이 마려울 때 드는 느낌 3가지 말해보기",
+  "똥이 마려울 때 드는 느낌 3가지 말해보기"
 ];
 
 const ButtonList = ({ answeredQuestions, resetAnswers }) => {
   return (
-    <div>
-      <h1>문제를 선택하세요</h1>
-      <div className="button-list">
+    <div className="button-list-container">
+      <h1>출동!</h1>
+      <h1>소화기관 탐험대</h1>
+      <div className="grid-container">
         {questions.map((question, index) => (
-          <div key={index} className={answeredQuestions.includes(index) ? "hidden" : "visible"}>
+          <div key={index} className={`grid-item ${answeredQuestions.includes(index) ? "hidden" : "visible"}`}>
             <Link to={`/question/${index + 1}`}>
-              <button>{`문제 ${index + 1}`}</button>
+              <img src={`/images/${index + 1}.jpg`} />
+              <span>{index + 1}</span>
             </Link>
           </div>
         ))}
       </div>
-      <button onClick={resetAnswers} className="reset-button">문제 초기화</button>
+      <button className="reset-button" onClick={resetAnswers}>초기화</button>
     </div>
   );
 };
