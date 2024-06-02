@@ -12,13 +12,13 @@ const QuestionPage = ({ onAnswered }) => {
   useEffect(() => {
     const synth = window.speechSynthesis;
     const availableVoices = synth.getVoices();
-    console.log(availableVoices); // 사용 가능한 음성 목록을 콘솔에 출력
+    // console.log(availableVoices); // 사용 가능한 음성 목록을 콘솔에 출력
     setVoices(availableVoices);
 
     if (availableVoices.length === 0) {
       synth.onvoiceschanged = () => {
         const newVoices = synth.getVoices();
-        console.log(newVoices); // 변경된 음성 목록을 콘솔에 출력
+        // console.log(newVoices); // 변경된 음성 목록을 콘솔에 출력
         setVoices(newVoices);
       };
     }
