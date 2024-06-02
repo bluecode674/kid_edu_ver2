@@ -1,12 +1,18 @@
-/* src/App.css */
+@font-face {
+  font-family: 'BMJUA';
+  src: url('/public/fonts/BMJUA_ttf.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f4f9;
+  font-family: 'BMJUA', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: #f4f4f9;
+  margin: 0;
 }
 
 .container {
@@ -15,23 +21,61 @@ body {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 80%;
-  max-width: 800px;
-  margin: 20px;
+  width: 90%; /* 너비를 90%로 설정 */
+  max-width: 800px; /* 최대 너비를 800px로 설정 */
+  height: auto; /* 높이를 자동으로 설정 */
+  max-height: 90%; /* 최대 높이를 90%로 설정 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
 /*
-h1 {
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  width: 100%; 
+}
+
+.grid-item {
+  background-color: #add8e6;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 24px;
-  color: #333;
+  color: black;
+  cursor: pointer;
+  transition: transform 0.2s;
+  position: relative;
 }
 
-p {
-  font-size: 18px;
-  color: #555;
+.grid-item img {
+  width: 100%;
+  height: auto;
+  max-width: 80px;
+  max-height: 80px;
+  object-fit: contain;
 }
 
-button {
+.grid-item span {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+}
+
+.grid-item:hover {
+  transform: scale(1.1);
+}
+
+.reset-button {
+  margin-top: 20px;
   padding: 10px 20px;
   background-color: #007bff;
   color: white;
@@ -39,28 +83,14 @@ button {
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  margin: 10px 0;
   transition: background-color 0.3s;
 }
 
-button:hover {
+.reset-button:hover {
   background-color: #0056b3;
-}
-
-.answer {
-  margin-top: 20px;
-  padding: 10px;
-  background-color: lightgray;
-  border-radius: 5px;
-  font-size: 18px;
-  color: #333;
 }
 
 .hidden {
   visibility: hidden;
-}
-
-.visible {
-  visibility: visible;
 }
 */

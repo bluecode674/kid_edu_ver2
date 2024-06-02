@@ -22,6 +22,12 @@ const QuestionPage = ({ onAnswered }) => {
   const handleAnswer = () => {
     setShowAnswer(true);
     onAnswered(questionId);
+
+    // 정답을 음성으로 읽어줍니다.
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(answers[questionId]);
+    synth.cancel(); // 현재 재생 중인 음성을 취소
+    synth.speak(utterance);
   };
 
   const renderTextWithLineBreaks = (text) => {
