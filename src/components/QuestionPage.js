@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { questions, answers } from './data';
 import './QuestionPage.css';
@@ -7,27 +7,56 @@ const QuestionPage = ({ onAnswered }) => {
   const { id } = useParams();
   const questionId = parseInt(id, 10) - 1;
   const [showAnswer, setShowAnswer] = useState(false);
+  const [voices, setVoices] = useState([]);
 
   useEffect(() => {
     const synth = window.speechSynthesis;
-    const utterance = new SpeechSynthesisUtterance(questions[questionId]);
-    synth.cancel(); // 현재 재생 중인 음성을 취소
-    synth.speak(utterance);
+    const availableVoices = synth.getVoices();
+    console.log(availableVoices); // 사용 가능한 음성 목록을 콘솔에 출력
+    setVoices(availableVoices);
+
+    if (availableVoices.length === 0) {
+      synth.onvoiceschanged = () => {
+        const newVoices = synth.getVoices();
+        console.log(newVoices); // 변경된 음성 목록을 콘솔에 출력
+        setVoices(newVoices);
+      };
+    }
 
     return () => {
-      synth.cancel(); // 컴포넌트가 언마운트되거나 업데이트될 때 음성을 취소
+      synth.cancel(); // 컴포넌트가 언마운트될 때 음성을 취소
     };
-  }, [questionId]);
+  }, []);
+
+  const speak = useCallback((text) => {
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 1.0; // 말하는 속도 조절 (0.1 ~ 10, 기본값: 1)
+    utterance.pitch = 1.5; // 목소리 톤 조절 (0 ~ 2, 기본값: 1)
+    // 원하는 목소리를 선택 (예: Google UK English Female)
+    const selectedVoice = voices.find(voice => voice.name === 'Google UK English Female');
+    if (selectedVoice) {
+      utterance.voice = selectedVoice;
+    }
+    synth.cancel(); // 현재 재생 중인 음성을 취소
+    synth.speak(utterance);
+  }, [voices]);
+
+  useEffect(() => {
+    const synth = window.speechSynthesis;
+    if (voices.length > 0) {
+      speak(questions[questionId]);
+    }
+
+    return () => {
+      synth.cancel(); // 컴포넌트가 업데이트될 때 음성을 취소
+    };
+  }, [questionId, voices, speak]);
 
   const handleAnswer = () => {
     setShowAnswer(true);
     onAnswered(questionId);
-
-    // 정답을 음성으로 읽어줍니다.
-    const synth = window.speechSynthesis;
-    const utterance = new SpeechSynthesisUtterance(answers[questionId]);
-    synth.cancel(); // 현재 재생 중인 음성을 취소
-    synth.speak(utterance);
+    speak(answers[questionId]);
   };
 
   const renderTextWithLineBreaks = (text) => {
