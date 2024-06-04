@@ -32,7 +32,7 @@ const QuestionPage = ({ onAnswered }) => {
     const synth = window.speechSynthesis;
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.rate = 1.0; // 말하는 속도 조절 (0.1 ~ 10, 기본값: 1)
-    utterance.pitch = 1.5; // 목소리 톤 조절 (0 ~ 2, 기본값: 1)
+    utterance.pitch = 1.0; // 목소리 톤 조절 (0 ~ 2, 기본값: 1)
     // 원하는 목소리를 선택 (예: Google UK English Female)
     const selectedVoice = voices.find(voice => voice.name === 'Google UK English Female');
     if (selectedVoice) {
