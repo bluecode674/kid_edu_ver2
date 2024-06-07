@@ -12,7 +12,7 @@ const QuestionPage = ({ onAnswered }) => {
   useEffect(() => {
     const synth = window.speechSynthesis;
     const availableVoices = synth.getVoices();
-    // console.log(availableVoices); // 사용 가능한 음성 목록을 콘솔에 출력
+    //console.log(availableVoices); // 사용 가능한 음성 목록을 콘솔에 출력
     setVoices(availableVoices);
 
     if (availableVoices.length === 0) {
@@ -34,7 +34,7 @@ const QuestionPage = ({ onAnswered }) => {
     utterance.rate = 1.0; // 말하는 속도 조절 (0.1 ~ 10, 기본값: 1)
     utterance.pitch = 1.0; // 목소리 톤 조절 (0 ~ 2, 기본값: 1)
     // 원하는 목소리를 선택 (예: Google UK English Female)
-    const selectedVoice = voices.find(voice => voice.name === 'Google UK English Female');
+    const selectedVoice = voices.find(voice => voice.name === 'Microsoft Heami - Korean (Korean)');
     if (selectedVoice) {
       utterance.voice = selectedVoice;
     }
